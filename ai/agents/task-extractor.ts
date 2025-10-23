@@ -37,11 +37,14 @@ const responseSchema = z.object({
  */
 export async function extractTasks(message: string) {
   const systemInstructions =
-    "You are an agent that extracts tasks from messages.";
+    "You are an agent that extracts tasks " +
+    "from messages.";
 
-  const prompt = `Extract all tasks from the following 
-      message ${message} and 
-      respond in JSON format with the fields: owner, task, and due (if specified). 
+  const prompt = `
+      Extract all tasks from the following message 
+      ${message} 
+      Respond in JSON format with the fields: 
+      - owner, - task, and - due (if specified). 
       If no tasks are found, return an empty array.`;
 
   // Call ai-sdk generateObject function to generate tasks from the message
