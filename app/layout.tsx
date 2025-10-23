@@ -7,7 +7,6 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
 });
 
-
 export const metadata: Metadata = {
   title: "Pwani AI Agent",
   description: "Pwani Innovation Week 2025",
@@ -20,11 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${dmSans.className} antialiased`}
-      >
-        {children}
-      </body>
+      <body className={`${dmSans.className} antialiased`}>{children}</body>
     </html>
   );
 }
