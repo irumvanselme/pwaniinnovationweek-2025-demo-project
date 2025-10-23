@@ -1,6 +1,6 @@
 "use server";
-import { extractTasks as TaskExtractorAgent } from "@/ai/agents/task-extractor"
+import { extractTasks as TaskExtractorAgent } from "@/ai/agents/task-extractor";
 
 export async function extractTasks(message: string) {
-  return await TaskExtractorAgent(message)
+  return await TaskExtractorAgent(message);
 }

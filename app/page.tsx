@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { useState } from "react";
-import { toast } from "sonner"
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { extractTasks } from "@/app/actions";
@@ -13,43 +13,41 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-
+} from "@/components/ui/table";
 
 type Task = {
-  owner: string
-  task: string
-  due?: string
-}
+  owner: string;
+  task: string;
+  due?: string;
+};
 
 export default function Home() {
-  const [input, setInput] = useState("")
-  const [isExtracting, setIsExtracting] = useState(false)
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [input, setInput] = useState("");
+  const [isExtracting, setIsExtracting] = useState(false);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   async function handleExtractTasksBtnClicked() {
     try {
       if (!input) {
         toast.error("Please enter a message to extract tasks from.", {
-          position: "top-center"
-        })
-        return
+          position: "top-center",
+        });
+        return;
       }
-      setIsExtracting(true)
-      const tasks = await extractTasks(input)
-      setTasks(tasks)
-      console.log("Tasks extracted successfully!")
+      setIsExtracting(true);
+      const tasks = await extractTasks(input);
+      setTasks(tasks);
+      console.log("Tasks extracted successfully!");
       toast.success("Tasks extracted successfully!", {
-        position: "top-center"
-      })
-
+        position: "top-center",
+      });
     } catch (error) {
-      console.error("Error extracting tasks:", error)
+      console.error("Error extracting tasks:", error);
       toast.error("Failed to extract tasks. Please try again.", {
-        position: "top-center"
-      })
+        position: "top-center",
+      });
     } finally {
-      setIsExtracting(false)
+      setIsExtracting(false);
     }
   }
 
@@ -62,9 +60,13 @@ export default function Home() {
         <Textarea
           placeholder="Enter your manager's message here..."
           rows={10}
-          onChange={e => setInput(e.target.value)}
+          onChange={(e) => setInput(e.target.value)}
         />
-        <Button className="w-full" onClick={handleExtractTasksBtnClicked} disabled={isExtracting}>
+        <Button
+          className="w-full"
+          onClick={handleExtractTasksBtnClicked}
+          disabled={isExtracting}
+        >
           {isExtracting ? "Extracting Tasks..." : "Extract Tasks"}
         </Button>
       </div>

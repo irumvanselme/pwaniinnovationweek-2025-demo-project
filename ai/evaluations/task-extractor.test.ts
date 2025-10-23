@@ -53,7 +53,7 @@ describe(
         const actualTasks = await extractTasks(evalTest.givenMessage);
 
         // Log some debug info for debugging purposes.
-        console.debug({ givenManagersMessage, actualTasks })
+        console.debug({ givenManagersMessage, actualTasks });
 
         // THEN the number of tasks should match the expected number.
         expect(actualTasks.length).toBe(evalTest.expectedTasksLen);
