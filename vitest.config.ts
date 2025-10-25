@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 import { defineConfig } from "vitest/config";
-import { config } from "dotenv";
+import { config } from "@dotenvx/dotenvx";
 
 config();
 
